@@ -20,7 +20,7 @@ PlansManager.setConfig("plansDef", {
   solo    : { "amount": 10,  "hosts": 3 },
   startup : { "amount": 50,  "hosts": 5 },
   pro     : { "amount": 150, "hosts": 15 },
-  business: { "amount": 350, "hosts": 45 }  
+  business: { "amount": 350, "hosts": 45 }
 });
 
 PlansManager.setConfig("allowedRange", {

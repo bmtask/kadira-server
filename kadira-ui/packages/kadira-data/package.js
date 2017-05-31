@@ -27,6 +27,7 @@ Package.onTest(function(api) {
   api.use('accounts-password');
   api.use('insecure');
   api.use('random');
+  api.use('kadira-collections@0.0.1');
 });
 
 Package.onUse(function(api) {
@@ -49,6 +50,7 @@ function configurePackage(api) {
   api.use('local:plans-manager');
   api.use('local:permissions-manager');
   api.use('anti:i18n');
+  api.use('kadira-collections@0.0.1');
 
   api.addFiles([
     'lib/namespace.js',

@@ -11,6 +11,6 @@ RUN npm install
 ADD . /app
 
 ENV PORT 80
-ENV MONGO_URL mongodb://dbserver/apm
+# ENV MONGO_URL mongodb://dbserver/apm
 
 CMD [ "npm", "run", "start" ]

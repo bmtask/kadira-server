@@ -23,8 +23,8 @@ Meteor.publish('kadiraData.observeMetrics', function(id, dataKey, args) {
       Meteor.clearInterval(intervalHandler);
     });
   } else {
-    // if not realtime and if client doesnt call subHandle.stop() for 30 secs. 
-    // force stop subscription 
+    // if not realtime and if client doesnt call subHandle.stop() for 30 secs.
+    // force stop subscription
     var timeOut = process.env.METEOR_ENV === 'test' ? 200 : 30000;
     Meteor.setTimeout(function() {
       sub.stop();

@@ -49,6 +49,7 @@ jparker:crypto-md5@0.1.1
 jparker:gravatar@0.5.1
 jquery@1.11.10
 jsx@0.2.4
+kadira-collections@0.0.1
 kadira:blaze-layout@2.3.0
 kadira:dochead@1.5.0
 kadira:flow-router@2.12.1

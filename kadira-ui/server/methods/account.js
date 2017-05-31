@@ -319,25 +319,25 @@ Meteor.methods({
         updatedUserFields["stripe.hasTrialled"] = true;
       }
 
-      if(user.stripe) {
-        if(user.stripe.subscriptionId) {
-          Stripe.customers.updateSubscription(
-            user.stripe.customerId,
-            user.stripe.subscriptionId,
-            params
-          );
-        } else {
-          var subInfo = Stripe.customers.createSubscription(
-            user.stripe.customerId,
-            params
-          );
-
-          _.extend(updatedUserFields, {
-            "stripe.subscriptionId": subInfo.id,
-            "stripe.subscriptionStart": new Date(subInfo.start * 1000)
-          });
-        }
-      }
+      // if(user.stripe) {
+      //   if(user.stripe.subscriptionId) {
+      //     Stripe.customers.updateSubscription(
+      //       user.stripe.customerId,
+      //       user.stripe.subscriptionId,
+      //       params
+      //     );
+      //   } else {
+      //     var subInfo = Stripe.customers.createSubscription(
+      //       user.stripe.customerId,
+      //       params
+      //     );
+      //
+      //     _.extend(updatedUserFields, {
+      //       "stripe.subscriptionId": subInfo.id,
+      //       "stripe.subscriptionStart": new Date(subInfo.start * 1000)
+      //     });
+      //   }
+      // }
 
       Meteor.users.update({_id: user._id}, {$set: updatedUserFields});
       KadiraAccounts.updateAppPlan(user._id, plan, oldPlan);
