@@ -34,10 +34,5 @@ Template["app.settings.dialog"].events({
   "click #delete-confirm-cancle": function(e) {
     e.preventDefault();
     FlowComponents.callAction("resetView");
-  },
-  "click #save-pricing-type": function(e, tmpl) {
-    e.preventDefault();
-    var appPricingType = tmpl.$("input[name=app-pricing-type]:checked").val();
-    FlowComponents.callAction("savePricingType", appPricingType);
   }
 });

@@ -5,23 +5,6 @@ Stripe = StripeHelper.getStripe();
 
 var usageCache = new LRU({max: 1000, maxAge: 1000 * 60 * 15});
 
-KadiraAccounts.updateAppPlan = function(userId, newPlan, oldPlan) {
-  var query = {owner: userId};
-  var fields = {"plan": newPlan};
-
-  //upgraded from free plan to paid.
-  // move their paid apps to paid
-  if(oldPlan === "free" && newPlan !== "free"){
-    fields.pricingType = "paid";
-  } else if (oldPlan !== "free" && newPlan === "free") {
-    // user is moving to free plan from a paid plan.
-    // move their paid apps to free
-    fields.pricingType = "free";
-  }
-
-  return Apps.update(query, {$set: fields}, {multi: true});
-};
-
 KadiraAccounts.getUsage = function(userId) {
   check(userId, String);
   var currentUser = Meteor.user() || {};
@@ -340,7 +323,6 @@ Meteor.methods({
       // }
 
       Meteor.users.update({_id: user._id}, {$set: updatedUserFields});
-      KadiraAccounts.updateAppPlan(user._id, plan, oldPlan);
     }
   },
 
@@ -405,14 +387,10 @@ Meteor.methods({
     if(!this.userId) {
       throw new Meteor.Error("Unauthorized");
     }
-    var fields = {owner: 1, maxHosts: 1, plan: 1, pricingType: 1};
+    var fields = {owner: 1, maxHosts: 1, plan: 1};
     var app = Apps.findOne({_id: appId}, {fields: fields});
     if(!app){
       throw new Meteor.Error(403, "app not found");
-    }
-    if(app.pricingType === "free"){
-      // we dont check host usage limits for free apps
-      return false;
     }
     var usage = KadiraAccounts.getTotalHostsUsage(app.owner);
 

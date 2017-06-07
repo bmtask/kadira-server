@@ -101,7 +101,6 @@ Meteor.methods({
         var appUpdateFields = {$set: {owner: this.userId}};
 
         result = Apps.update({_id: pendingUser.app}, appUpdateFields);
-        KadiraAccounts.updateAppPlan(this.userId, plan);
       } else {
         var role = pendingUser.type;
         var collabUpdateFields = {

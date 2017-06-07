@@ -32,7 +32,6 @@ http.createServer(app).listen(port);
 var DBS = {};
 
 MongoCluster.initFromEnv(function(err, cluster) {
-  console.log('DDONE')
   if(err) {
     console.error('Error connecting to the Mongo Metrics Cluster');
     throw err;
@@ -40,7 +39,6 @@ MongoCluster.initFromEnv(function(err, cluster) {
     DBS.metricsCluster = cluster;
     mongodb.MongoClient.connect(process.env.MONGO_URL, afterMongoURLConnected);
   }
-
 });
 
 function afterMongoURLConnected(err, db) {
