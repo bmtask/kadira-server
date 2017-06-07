@@ -3,7 +3,6 @@ Meteor.publish("user.userInfo", function() {
   if(this.userId){
     var userFields = {
       emails: 1,
-      plan: 1,
       apps: 1,
       admin: 1,
       createdAt: 1,

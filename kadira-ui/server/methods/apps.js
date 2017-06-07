@@ -7,7 +7,7 @@ Meteor.methods({
     if(!this.userId){
       throw new Meteor.Error(403, "user must login to create app");
     }
-    // set users plan to app
+
     var shard = KadiraData.mongoCluster.pickShard();
     var subShard = Math.floor(Math.random() * 128);
 
