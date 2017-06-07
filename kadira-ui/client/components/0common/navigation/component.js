@@ -13,7 +13,3 @@ var component = FlowComponents.define("navigation", function(params) {
 component.prototype.setAsActive = function(section) {
   this.set("active", section);
 };
-
-component.state.isNavPosition = function(pos) {
-  return this.get("pos") === pos;
-};
