@@ -58,7 +58,6 @@ module.exports = function (appDb, metricsCluster) {
         var payload = {
           app: app,
           host: data.host,
-          plan: app.plan,
           errors: errors
         }
 

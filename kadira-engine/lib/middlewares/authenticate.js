@@ -15,7 +15,6 @@ module.exports = function(db) {
         } else if(app) {
           req.app = req.body.app = app;
           req.appId = req.body.appId = appId;
-          req.plan = req.body.plan = app.plan;
 
           stateManager.setState(db, app, 'initialDataReceived');
           next();

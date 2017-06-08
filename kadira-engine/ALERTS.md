@@ -2,8 +2,6 @@
 
 This document contains the specification for alerts. Alerts will be saved into the `alerts` collection. Alerts can be modified and deleted.
 
-Alerts can limited by the count based on the plan.
-
 Sample alert document:
 
 ~~~js
