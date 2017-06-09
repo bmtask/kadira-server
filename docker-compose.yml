@@ -1,47 +1,47 @@
 version: '2'
 services:
-  kadira-db:
+  db:
     image: mongo
     ports:
       - 27017:27017
-  kadira-engine:
-    build: ./kadira-engine
+  engine:
+    build: ./engine
     ports:
       - "10001:80"
     environment:
       - PORT=80
-      - MONGO_SHARD_URL_one=mongodb://kadira-db:27017/apm
-      - MONGO_URL=mongodb://kadira-db:27017/apm
+      - MONGO_SHARD_URL_one=mongodb://db:27017/apm
+      - MONGO_URL=mongodb://db:27017/apm
     links:
-      - kadira-db
-  kadira-rma:
-    build: ./kadira-rma
+      - db
+  rma:
+    build: ./rma
     environment:
       - MONGO_SHARD=one
-      - MONGO_URL=mongodb://kadira-db:27017/apm
+      - MONGO_URL=mongodb://db:27017/apm
     links:
       - kadira-db
-  kadira-api:
-    build: ./kadira-api
+  api:
+    build: ./api
     ports:
       - "10002:80"
     environment:
       - PORT=80
-      - MONGO_APP_URL=mongodb://kadira-db:27017/apm
-      - MONGO_SHARD_URL_one=mongodb://kadira-db:27017/apm
+      - MONGO_APP_URL=mongodb://db:27017/apm
+      - MONGO_SHARD_URL_one=mongodb://db:27017/apm
       - MAIL_URL=smtp://user:pass@smtp.mailgun.org:587
     links:
-      - kadira-db
-  kadira-ui:
-    build: ./kadira-ui
+      - db
+  ui:
+    build: ./ui
     ports:
       - "10003:80"
     environment:
       - PORT=80
       - ROOT_URL=http://127.0.0.1:10003
-      - MONGO_URL=mongodb://kadira-db:27017/apm
-      - MONGO_SHARD_URL_one=mongodb://kadira-db:27017/apm
+      - MONGO_URL=mongodb://db:27017/apm
+      - MONGO_SHARD_URL_one=mongodb://db:27017/apm
       - MAIL_URL=smtp://user:pass@smtp.mailgun.org:587
       - METEOR_SETTINGS={"public":{}}
     links:
-      - kadira-db
+      - db
