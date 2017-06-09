@@ -30,14 +30,6 @@ services:
       - MONGO_APP_URL=mongodb://kadira-db:27017/apm
       - MONGO_SHARD_URL_one=mongodb://kadira-db:27017/apm
       - MAIL_URL=smtp://user:pass@smtp.mailgun.org:587
-      - AUTH_SECRET=secret
-      - JWT_SECRET=secret
-      - JWT_LIFETIME=1d
-      - TRELLO_KEY=xxxxxxxxx
-      - TRELLO_RATE=xxxxxxxxx
-      - TRELLO_TOKEN=xxxxxxxxx
-      - TRELLO_ORG_ID=xxxxxxxxx
-      - TRELLO_MAIN_BOARD_ID=xxxxxxxxx
     links:
       - kadira-db
   kadira-ui:
@@ -50,9 +42,6 @@ services:
       - MONGO_URL=mongodb://kadira-db:27017/apm
       - MONGO_SHARD_URL_one=mongodb://kadira-db:27017/apm
       - MAIL_URL=smtp://user:pass@smtp.mailgun.org:587
-      - AWS_ACCESS_KEY_ID=xxxxxxxxxxxxx
-      - AWS_SECRET_ACCESS_KEY=xxxxxxxxxxxxx
       - METEOR_SETTINGS={"public":{"intercom":{},"loginState":{"domain":"","cookieName":"kadira-dev-login-state"}},"tender":{"secret":"71825e70-d11d-489b-b273-2afdca024fd6"},"kadirahq":{"apiKey":"sk_test_22QITCBPhqEaEKjHXK5BBwO8","publishableKey":"pk_test_Tc1iVNRP9p8o7zgYWoWjZnm4","appName":"KadiraHQ","appLogo":"https://kadira.io/favicon.ico"}}}
-
     links:
       - kadira-db
