@@ -42,6 +42,6 @@ services:
       - MONGO_URL=mongodb://kadira-db:27017/apm
       - MONGO_SHARD_URL_one=mongodb://kadira-db:27017/apm
       - MAIL_URL=smtp://user:pass@smtp.mailgun.org:587
-      - METEOR_SETTINGS={"public":{"intercom":{},"loginState":{"domain":"","cookieName":"kadira-dev-login-state"}},"tender":{"secret":"71825e70-d11d-489b-b273-2afdca024fd6"},"kadirahq":{"apiKey":"sk_test_22QITCBPhqEaEKjHXK5BBwO8","publishableKey":"pk_test_Tc1iVNRP9p8o7zgYWoWjZnm4","appName":"KadiraHQ","appLogo":"https://kadira.io/favicon.ico"}}}
+      - METEOR_SETTINGS={"public":{}}
     links:
       - kadira-db
