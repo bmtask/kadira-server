@@ -10,10 +10,6 @@
     }
   },
 
-  "tender": {
-    "secret": "71825e70-d11d-489b-b273-2afdca024fd6"
-  },
-
   "meteorDevelopers": {
     "clientId": "HcempmSyaawiyb4G4",
     "secret": "snC3snsmTebC8HHCwwhqhHaAzAFxtFsQRL"
